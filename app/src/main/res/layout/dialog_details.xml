@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_parent_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_30dp"
+    android:layout_gravity="center"
+    android:padding="@dimen/_10dp"
+    android:background="@drawable/white_rounded_background">
+
+
+    <ImageView
+        android:id="@+id/ivClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/close"
+        android:padding="@dimen/_8dp"
+        app:srcCompat="@drawable/ic_close"
+        android:background="@drawable/tap_pressed"/>
+
+    <LinearLayout
+        android:id="@+id/llArtwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadow"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/ivClose">
+
+        <ImageView
+            android:id="@+id/ivArtwork"
+            android:layout_width="@dimen/_200dp"
+            android:layout_height="@dimen/_200dp"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/artwork"
+            android:layout_marginTop="@dimen/_20dp"
+            android:layout_marginStart="@dimen/_30dp"
+            android:layout_marginEnd="@dimen/_30dp"
+            android:layout_marginBottom="@dimen/_30dp"/>
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/tvTitle"
+        style="@style/TrackTitleDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llArtwork"
+        android:layout_marginTop="@dimen/_16dp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tvSubTitle"
+        style="@style/TrackSubtitleDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitle"
+        android:layout_marginTop="@dimen/_8dp"
+        android:textAlignment="center"/>
+
+
+    <LinearLayout
+        android:id="@+id/llListen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSubTitle"
+        android:layout_marginTop="@dimen/_24dp"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:layout_marginEnd="@dimen/_16dp"
+        android:layout_marginStart="@dimen/_16dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/color_outline_button_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            style="@style/SCButton"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:layout_marginBottom="@dimen/_8dp"
+            android:layout_marginStart="@dimen/_16dp"
+            android:layout_marginEnd="@dimen/_16dp"
+            android:letterSpacing="0.2"
+            android:text="@string/listen_on_sc"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

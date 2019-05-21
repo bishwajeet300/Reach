@@ -1,82 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fullscreen_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000810"
+    android:background="@android:color/white"
     tools:context=".view.splash.SplashActivity">
 
-    <!-- The primary full-screen view. This can be replaced with whatever view
-         is needed to present your content, e.g. VideoView, SurfaceView,
-         TextureView, etc. -->
-
-    <LinearLayout
-        android:id="@+id/fullscreen_content"
+    <ImageView
+        android:id="@+id/ivSplashWave"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="@dimen/_200dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/_100dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/splash_wave"/>
 
-        <LinearLayout
-            android:id="@+id/llUpperLayer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.88"
-            android:background="@drawable/splash_upperlayer"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvSplashText"
+            android:layout_below="@+id/ivSplashWave"
+            style="@style/SplashText"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:letterSpacing="0.2"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llLowerLayer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.12"
-            android:background="@drawable/splash_lowerlayer"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- This FrameLayout insets its children based on system windows using
-         android:fitsSystemWindows. -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:visibility="gone">
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
-
-        </LinearLayout>
-    </FrameLayout>
-
-</FrameLayout>
+</RelativeLayout>

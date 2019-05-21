@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fullscreen_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsvMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".view.landing.LandingActivity"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/PageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_48dp"
+                android:layout_marginStart="@dimen/_16dp"
+                android:layout_marginEnd="@dimen/_16dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:text="@string/music" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vpTopContent"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170dp"
+                android:layout_gravity="center"
+                android:padding="@dimen/_10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:padding="@dimen/_2dp">
+
+                <TextView
+                    android:id="@+id/tvOption1"
+                    style="@style/OptionsTitle"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:padding="@dimen/_8dp"
+                    android:drawableTop="@drawable/ic_rank"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:text="@string/option1"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tvOption2"
+                    style="@style/OptionsTitle"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:padding="@dimen/_8dp"
+                    android:drawableTop="@drawable/ic_singer"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:text="@string/option2"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tvOption3"
+                    style="@style/OptionsTitle"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:paddingTop="@dimen/_8dp"
+                    android:paddingBottom="@dimen/_10dp"
+                    android:paddingStart="@dimen/_4dp"
+                    android:paddingEnd="@dimen/_4dp"
+                    android:drawableTop="@drawable/ic_album"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:text="@string/option3"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/tvOption4"
+                    style="@style/OptionsTitle"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.25"
+                    android:padding="@dimen/_8dp"
+                    android:drawableTop="@drawable/ic_genre"
+                    android:drawablePadding="@dimen/_10dp"
+                    android:text="@string/option4"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvParentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:layout_marginBottom="@dimen/_4dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginEnd="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:layout_marginBottom="@dimen/_10dp"
+                android:background="@color/page_subtitle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/TrackSubtitle"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/thats_all"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/rlLoader"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:background="@drawable/gradient_background">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/LoaderText"
+            android:text="@string/loader_text"
+            android:textAlignment="center"/>
+
+    </RelativeLayout>
+</LinearLayout>

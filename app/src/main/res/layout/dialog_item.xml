@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_64dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="@dimen/_16dp"
+    android:layout_marginEnd="@dimen/_16dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        style="@style/TrackTitle"
+        android:textAlignment="viewStart"
+        android:lines="1"
+        android:ellipsize="end"
+        android:layout_toStartOf="@+id/ivPlay"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tvSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        style="@style/TrackSubtitle"
+        android:layout_alignParentBottom="true"
+        android:lines="1"
+        android:layout_alignParentStart="true"
+        android:textAlignment="viewStart"
+        android:layout_toStartOf="@+id/ivPlay"
+        android:layout_marginBottom="@dimen/_16dp"/>
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="@dimen/_24dp"
+        android:layout_height="@dimen/_24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        app:srcCompat="@drawable/ic_play"
+        android:contentDescription="@string/play"
+        android:background="@drawable/color_outline_button_bg"/>
+
+</RelativeLayout>

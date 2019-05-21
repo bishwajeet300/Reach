@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.review.sc">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".SCApplication"
         android:allowBackup="true"
@@ -14,19 +16,34 @@
         <activity
             android:name=".view.splash.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_splash"
+            android:label="@string/app_name"
             android:theme="@style/SoundCloud">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="soundc.com"
+                    android:scheme="sound" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".view.login.LoginActivity"
+            android:name=".view.landing.LandingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_login"
-            android:theme="@style/SoundCloud" />
+            android:label="@string/app_name"
+            android:theme="@style/SoundCloud"
+            android:screenOrientation="portrait"/>
+
+        <service android:name=".service.scheduler.SchedulerJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:label="Scheduler Job Service"/>
 
     </application>
 

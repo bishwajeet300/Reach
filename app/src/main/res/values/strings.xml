@@ -1,9 +1,17 @@
 <resources>
-    <string name="app_name">SCReview</string>
-
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-
-    <string name="title_activity_splash">SplashActivity</string>
+    <string name="app_name">Reach</string>
+    <string name="option4">Genre</string>
+    <string name="option3">Throwback</string>
+    <string name="option2">Singers</string>
+    <string name="option1">Trending</string>
+    <string name="heading1">Top Trending</string>
+    <string name="heading2">Jump to first</string>
+    <string name="music">Music</string>
+    <string name="listen_on_sc">Listen on SoundCloud</string>
+    <string name="close">close</string>
+    <string name="app_text">Discovering music\nthrough people</string>
+    <string name="loader_text">Curating playlists…</string>
+    <string name="thats_all">That\'s all folks</string>
+    <string name="artwork">Artwork</string>
+    <string name="play">Play on SoundCloud</string>
 </resources>

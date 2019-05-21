@@ -3,9 +3,12 @@
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">#080916</color>
-
     <color name="black_overlay">#66000000</color>
     <color name="primary_dark_material_light">#ffffff</color>
     <color name="foreground_material_light">#bcc3cf</color>
     <color name="text_color_primary">#74879b</color>
+    <color name="page_title">#333333</color>
+    <color name="page_subtitle">#999999</color>
+    <color name="track_subtitle">#bcbcbc</color>
+    <color name="options_title">#6f6f6f</color>
 </resources>

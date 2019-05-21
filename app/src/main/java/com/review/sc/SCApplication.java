@@ -13,7 +13,9 @@ import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
 import dagger.android.HasBroadcastReceiverInjector;
 import dagger.android.HasServiceInjector;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyConfig;
+import io.github.inflationx.calligraphy3.CalligraphyInterceptor;
+import io.github.inflationx.viewpump.ViewPump;
 
 public class SCApplication extends Application implements HasActivityInjector, HasServiceInjector, HasBroadcastReceiverInjector {
 
@@ -37,9 +39,13 @@ public class SCApplication extends Application implements HasActivityInjector, H
                 .build()
                 .inject(this);
 
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/SNFNS-Light.ttf")
-                .setFontAttrId(R.attr.fontPath)
+
+        ViewPump.init(ViewPump.builder()
+                .addInterceptor(new CalligraphyInterceptor(
+                        new CalligraphyConfig.Builder()
+                                .setDefaultFontPath("fonts/Raleway-Regular.ttf")
+                                .setFontAttrId(R.attr.fontPath)
+                                .build()))
                 .build());
     }
 

@@ -1,8 +1,8 @@
 package com.review.sc;
 
 import com.review.sc.di.scope.PerActivity;
-import com.review.sc.view.login.LoginActivity;
-import com.review.sc.view.login.LoginModule;
+import com.review.sc.view.landing.LandingActivity;
+import com.review.sc.view.landing.LandingModule;
 import com.review.sc.view.splash.SplashActivity;
 import com.review.sc.view.splash.SplashModule;
 
@@ -20,6 +20,6 @@ public abstract class ActivityBuilderModule {
 
     //Used @ContributesAndroidInjector as no subComponents were present for this Activity
     @PerActivity
-    @ContributesAndroidInjector(modules = LoginModule.class)
-    abstract LoginActivity loginActivityInjector();
+    @ContributesAndroidInjector(modules = LandingModule.class)
+    abstract LandingActivity loginActivityInjector();
 }
