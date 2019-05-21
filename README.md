@@ -1,4 +1,4 @@
-#Reach - Music Curating App
+# Reach - Music Curating App
 
 Reach is a music curating app which takes data from SoundCloud's public APIs and presents them in a clean and modular interface.
 
