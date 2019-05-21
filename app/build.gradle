@@ -59,7 +59,7 @@ dependencies {
     implementation "com.jakewharton:butterknife:$versionButterKnife"
     annotationProcessor "com.jakewharton:butterknife-compiler:$versionButterKnife"
 
-    //Network + Volley
+    //Network
     implementation "com.squareup.retrofit2:retrofit:$versionRetroFit"
     implementation "com.squareup.retrofit2:converter-gson:$versionRetroFit"
 
