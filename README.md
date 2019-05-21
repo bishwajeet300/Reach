@@ -1,6 +1,6 @@
 # Reach - Music Curating App
 
-Reach is a music curating app which takes data from SoundCloud's public APIs and presents them in a clean and modular interface.
+Reach is a music curating app which takes data from SoundCloud public APIs and presents them in a clean and modular interface.
 
 
 ## Architecture & Design Pattern
@@ -20,7 +20,7 @@ Ranking of songs has been achieved on the basis on below mentioned parameters:
 * Release Month
 
 ### Data Updates
-App's data is refreshed every 60 minutes from the time of opening of app. JobScheduler has been utilized to achieve this. API calls to fetch latest data is requested only on app open. Background operations are kept at minimum while the app in not in use.
+App data is refreshed every 60 minutes from the time of opening of app. JobScheduler has been utilized to achieve this. API calls to fetch latest data is requested only on app open. Background operations are kept at minimum while the app in not in use.
 Data is being persisted in SQLite, which serves as the data source for the app. Database tables are cleared by JobScheduler at periodic intervals (60 mins).
 
 ### Background Operations
