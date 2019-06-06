@@ -1,6 +1,5 @@
 package com.review.sc.view.landing;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -212,9 +211,20 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
             tracks.add(new Category("Most Liked", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.FAVORITINGS_COUNT, 50)));
             tracks.add(new Category("Latest Release", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.RELEASE_MONTH, 50)));
             tracks.add(new Category("Most Talked About", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.COMMENT_COUNT, 50)));
-            tracks.add(new Category("Best of Hip-Hop & Rap", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, "Hip-hop & Rap", 50)));
-            tracks.add(new Category("Best of Alternative Rock", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, "Alternative Rock", 50)));
-            tracks.add(new Category("Best of R&B & Soul", getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, "R&B & Soul", 50)));
+
+            LinkedList<Track> topGenre = mPresenter.getFilteredRecords(TracksDAO.GENRE, 3);
+
+            if (topGenre.size() >= 1) {
+                tracks.add(new Category("Best of " + topGenre.get(0).getGenre(), getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, topGenre.get(0).getGenre(), 50)));
+            }
+
+            if (topGenre.size() >= 2) {
+                tracks.add(new Category("Best of " + topGenre.get(1).getGenre(), getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, topGenre.get(1).getGenre(), 50)));
+            }
+
+            if (topGenre.size() >= 3) {
+                tracks.add(new Category("Best of " + topGenre.get(2).getGenre(), getResources().getString(R.string.heading2), mPresenter.getFilteredRecords(TracksDAO.GENRE, topGenre.get(2).getGenre(), 50)));
+            }
 
             setRecyclerData(tracks);
         }
@@ -227,7 +237,6 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
     }
 
 
-    @SuppressLint("HandlerLeak")
     @Override
     public void showDetails(final Track track) {
         final Dialog dialog = new Dialog(LandingActivity.this, R.style.DetailsDialog);
