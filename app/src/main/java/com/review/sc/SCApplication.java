@@ -6,6 +6,8 @@ import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 
+import com.flurry.android.FlurryAgent;
+
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
@@ -47,6 +49,10 @@ public class SCApplication extends Application implements HasActivityInjector, H
                                 .setFontAttrId(R.attr.fontPath)
                                 .build()))
                 .build());
+
+        new FlurryAgent.Builder()
+                .withLogEnabled(true)
+                .build(this, "MZ8QRCBB9DYXPZN4X5Y4");
     }
 
 

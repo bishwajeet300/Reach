@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>README.md</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <style type="text/css">
+.s0 { color: #cc7832; font-weight: bold;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #a9b7c6;}
+
+
+    </style>
+</head>
+<body bgcolor="#2b2b2b">
+<table BGCOLOR="#606060" CELLPADDING=5 CELLSPACING=0 COLS=1 WIDTH="100%">
+    <tr>
+        <td>
+            <center>
+                <font color="#000000" face="Arial, Helvetica">
+                    README.md</font>
+            </center>
+        </td>
+    </tr>
+</table>
+<pre><span class="s0"># </span><span class="s2">Reach - Music Curating App</span>
+
+Reach is a music curating app which takes data from SoundCloud public APIs and presents them in a clean and modular interface.
+
+
+<span class="s0">## </span><span class="s2">Architecture &amp; Design Pattern</span>
+
+Reach follows a Model-View-Presenter design pattern. A clear segregation among the three elements helps in achieving a loosely coupled but highly cohesive application.
+In order to create a highly testable piece of code, Dependency Injection has been used. Dagger2 and ButterKnife help in facilitating this.
+
+Reach has a single screen for all the information required by the user.
+
+
+<span class="s0">### </span><span class="s2">Music Ranking</span>
+Ranking of songs has been achieved on the basis on below mentioned parameters<span
+            class="s1">:</span>
+
+<span class="s0">* </span><span class="s2">Number of times a song was made favorite,</span>
+<span class="s0">* </span><span class="s2">Number of times a song was commented on,</span>
+<span class="s0">* </span><span class="s2">Number of times a song was played,</span>
+<span class="s0">* </span><span class="s2">Release Month</span>
+
+<span class="s0">### </span><span class="s2">Data Updates</span>
+App data is refreshed every 60 minutes from the time of opening of app. JobScheduler has been utilized to achieve this. API calls to fetch latest data is requested only on app open. Background operations are kept at minimum while the app in not in use.
+Data is being persisted in SQLite, which serves as the data source for the app. Database tables are cleared by JobScheduler at periodic intervals <span
+            class="s1">(</span><span class="s2">60 mins</span><span class="s1">)</span><span
+            class="s2">.</span>
+
+<span class="s0">### </span><span class="s2">Background Operations</span>
+ThreadPoolExecutor along with other Java/Android Threading mechanisms have been utilized in order to keep the UI thread free from heavy operations.
+
+
+<span class="s0">## </span><span class="s2">3rd Party Libraries</span>
+
+<span class="s0">* </span><span class="s2">Android Support Libraries </span><span
+            class="s1">(</span><span class="s2">v 28.0.0</span><span class="s1">)</span>
+<span class="s0">* </span><span class="s2">Dagger </span><span class="s1">(</span><span class="s2">v 2.12</span><span
+            class="s1">)</span>
+<span class="s0">* </span><span class="s2">ButterKnife </span><span class="s1">(</span><span
+            class="s2">v 8.7.0</span><span class="s1">)</span>
+<span class="s0">* </span><span class="s2">RetroFit </span><span class="s1">(</span><span
+            class="s2">v 2.3.0</span><span class="s1">)</span>
+<span class="s0">* </span><span class="s2">Glide </span><span class="s1">(</span><span class="s2">v 4.8.0</span><span
+            class="s1">)</span>
+<span class="s0">* </span><span class="s2">Calligraphy </span><span class="s1">(</span><span
+            class="s2">v 3.1.1</span><span class="s1">)</span>
+<span class="s0">* </span><span class="s2">Gson </span><span class="s1">(</span><span class="s2">v 2.7</span><span
+            class="s1">)</span>
+
+
+<span class="s0">## </span><span class="s2">Credits &amp; Acknowledgments</span>
+
+<span class="s0">* </span><span class="s2">Dribbble</span>
+<span class="s0">* </span><span class="s2">GitHub</span>
+<span class="s0">* </span><span class="s2">StackOverflow</span>
+<span class="s0">* </span><span class="s2">Medium</span>
+
+
+</pre>
+</body>
+</html>

@@ -42,6 +42,9 @@ import com.review.sc.view.landing.adapters.DialogRecyclerAdapter;
 import com.review.sc.view.landing.adapters.ParentRecyclerAdapter;
 import com.review.sc.view.landing.adapters.SliderAdapter;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -92,6 +95,7 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
     SliderAdapter sliderAdapter;
     Thread networkThread;
     Handler networkHandler;
+    ImageView ivArtwork;
 
 
     @Override
@@ -156,6 +160,21 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
                         Log.e(TAG, "From API");
                         mPresenter.fetchFollowerRecords("16948903");
                     }
+
+
+                    try {
+                        Process process = Runtime.getRuntime().exec("logcat ");
+                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+                        StringBuilder log = new StringBuilder();
+                        String line;
+                        while ((line = bufferedReader.readLine()) != null) {
+                            log.append(line);
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, e.getMessage());
+                    }
+
                 }
             });
     }
@@ -246,7 +265,7 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
         dialog.setContentView(R.layout.dialog_details);
 
         ImageView ivClose = dialog.findViewById(R.id.ivClose);
-        final ImageView ivArtwork = dialog.findViewById(R.id.ivArtwork);
+        ivArtwork = dialog.findViewById(R.id.ivArtwork);
         TextView tvTitle = dialog.findViewById(R.id.tvTitle);
         TextView tvSubTitle = dialog.findViewById(R.id.tvSubTitle);
         LinearLayout llListen = dialog.findViewById(R.id.llListen);
@@ -261,29 +280,7 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
         try {
             networkThread = new Thread(new ImageDownloader(track.getArtwork_url()));
             networkThread.start();
-            networkHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    try {
-
-                        Bitmap mbitmap = (Bitmap) msg.obj;
-
-                        Bitmap imageRounded = Bitmap.createBitmap(mbitmap.getWidth(), mbitmap.getHeight(), mbitmap.getConfig());
-                        Canvas canvas = new Canvas(imageRounded);
-                        Paint mpaint = new Paint();
-                        mpaint.setAntiAlias(true);
-                        mpaint.setShader(new BitmapShader(mbitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
-
-                        //For Circular Bounds
-                        canvas.drawRoundRect((new RectF(0, 0, mbitmap.getWidth(), mbitmap.getHeight())), 200, 200, mpaint);// Round Image Corner 100 100 100 100
-
-                        //For Rounded Corner Square
-                        ivArtwork.setImageBitmap(imageRounded);
-                    } catch (Exception e) {
-                        Log.e(TAG, e.getMessage());
-                    }
-                }
-            };
+            networkHandler = new ImageFormatterHandler(this);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -379,6 +376,41 @@ public class LandingActivity extends AppCompatActivity implements ILandingContra
                 networkHandler.sendMessage(imageMessage);
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+        }
+    }
+
+
+    private static class ImageFormatterHandler extends Handler {
+        private final WeakReference<LandingActivity> activityWeakReference;
+
+        private ImageFormatterHandler(LandingActivity activity) {
+            activityWeakReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            try {
+
+                LandingActivity landingActivity = activityWeakReference.get();
+
+                if (null != landingActivity) {
+                    Bitmap mbitmap = (Bitmap) msg.obj;
+
+                    Bitmap imageRounded = Bitmap.createBitmap(mbitmap.getWidth(), mbitmap.getHeight(), mbitmap.getConfig());
+                    Canvas canvas = new Canvas(imageRounded);
+                    Paint mpaint = new Paint();
+                    mpaint.setAntiAlias(true);
+                    mpaint.setShader(new BitmapShader(mbitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
+
+                    //For Circular Bounds
+                    canvas.drawRoundRect((new RectF(0, 0, mbitmap.getWidth(), mbitmap.getHeight())), 200, 200, mpaint);// Round Image Corner 100 100 100 100
+
+                    //For Rounded Corner Square
+                    landingActivity.ivArtwork.setImageBitmap(imageRounded);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
             }
         }
     }
